@@ -1,6 +1,7 @@
-<h1><%= @bechelorette.name %></h1>
+<h1><%= @bachelorette.name %></h1>
 
-<p>Season: <%= @bechelorette.season_number %></p>
-<p>Overview: <%= @bechelorette.description %></p>
+<p>Season: <%= @bachelorette.season_number %></p>
+<p>Overview: <%= @bachelorette.description %></p>
 
+<%= link_to "View Contestants", "/bachelorettes/#{@bachelorette.id}/contestants" %>
 
