@@ -12,5 +12,9 @@ RSpec.describe "Bachelorette Index" do
     expect(page).to have_content(@bachelorette1.season_number)
     expect(page).to have_content(@bachelorette1.description)
 
+    expect(page).to have_link("View Contestants")
+    click_link("View Contestants")
+    expect(current_path).to eq("/bachelorettes/#{@bachelorette1.id}/contestants")
+    
   end
 end
