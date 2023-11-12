@@ -1,7 +1,7 @@
 <h1>This seasons Contestants are </h1>
 
 <% @bachelorette.contestants.each do |contestant| %>
-  <h3>Name: <%= contestant.name %></h3>
+  <h3>Name: <%= link_to "#{contestant.name}", contestant %></h3>
   <p>Age: <%= contestant.age %></p>
   <p>Hometown: <%= contestant.hometown %></p>
 <% end %>

@@ -26,21 +26,24 @@ RSpec.describe "Bachelorette Show" do
 
     visit "/bachelorettes/#{@bachelorette1.id}/contestants"
 
-    expect(page).to have_content(@contestant1.name)
+    expect(page).to have_link(@contestant1.name)
     expect(page).to have_content(@contestant1.age)
     expect(page).to have_content(@contestant1.hometown)
-    expect(page).to have_content(@contestant2.name)
+    expect(page).to have_link(@contestant2.name)
     expect(page).to have_content(@contestant2.age)
     expect(page).to have_content(@contestant2.hometown)
-    expect(page).to have_content(@contestant3.name)
+    expect(page).to have_link(@contestant3.name)
     expect(page).to have_content(@contestant3.age)
     expect(page).to have_content(@contestant3.hometown)
-    expect(page).to have_content(@contestant4.name)
+    expect(page).to have_link(@contestant4.name)
     expect(page).to have_content(@contestant4.age)
     expect(page).to have_content(@contestant4.hometown)
     
-    expect(page).to_not have_content(@contestant5.name)
+    expect(page).to_not have_link(@contestant5.name)
     expect(page).to_not have_content(@contestant5.age)
     expect(page).to_not have_content(@contestant5.hometown)
+
+    click_link("#{@contestant1.name}")
+    expect(current_path).to eq("/contestants/#{@contestant1.id}")
   end
 end
