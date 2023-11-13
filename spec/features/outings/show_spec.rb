@@ -28,13 +28,30 @@ RSpec.describe "Contestants Index" do
     expect(page).to_not have_content(@contestant2.name)
     
     @contestant2.outings << @outing1
-    
     visit "/outings/#{@outing1.id}"
 
     expect(page).to have_content(@outing1.count_of_contestants)
     expect(page).to have_content(2)
     expect(page).to have_content(@contestant1.name)
     expect(page).to have_content(@contestant2.name)
-    # require 'pry'; binding.pry
+  end
+
+  it "can remove contestant from outing" do
+    visit "/outings/#{@outing1.id}"
+
+    expect(page).to have_content(@outing1.name)
+    expect(page).to have_content(@outing1.date)
+    expect(page).to have_content(@outing1.location)
+    expect(page).to have_content(@outing1.count_of_contestants)
+    expect(page).to have_content(1)
+    expect(page).to have_content(@contestant1.name)
+    expect(page).to have_button("Remove")
+
+    click_button("Remove")
+    expect(current_path).to eq("/outings/#{@outing1.id}")
+    
+    expect(page).to have_content(0)
+    expect(page).to_not have_content(@contestant1.name)
+    expect(page).to_not have_button("Remove")
   end
 end

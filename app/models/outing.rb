@@ -8,7 +8,7 @@ class Outing < ApplicationRecord
 
   def contestant_names
     contestants.map do |contestant| 
-      contestant.name
+      contestant
     end
   end
 end

@@ -4,5 +4,6 @@
 <p>Date: <%= @outing.date %></p>
 <p>Count of Contestants: <%= @outing.count_of_contestants %></p>
 <p>Contestant Names: <% @outing.contestant_names.each do |contestant| %></p>
-  <p><%= contestant %></p>
+  <p><%= contestant.name %>
+  <%= button_to "Remove", outing_path(@outing, remove_contestant_id: contestant.id), method: :patch  %></p>
 <% end %>
