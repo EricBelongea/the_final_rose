@@ -33,4 +33,14 @@ RSpec.describe "Contestants Index" do
     expect(page).to_not have_content(@contestant5.age)
     expect(page).to_not have_content(@contestant5.hometown)
   end
+
+  it "has a unique lsit of hometowns" do
+    visit "/bachelorettes/#{@bachelorette1.id}/contestants"
+
+    within("div#hometown") do
+      expect(page).to have_content("LA")
+      expect(page).to have_content("Chi-Town")
+      expect(page).to have_content("NYC")
+    end
+  end
 end
