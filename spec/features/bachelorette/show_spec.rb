@@ -46,4 +46,10 @@ RSpec.describe "Bachelorette Show" do
     click_link("#{@contestant1.name}")
     expect(current_path).to eq("/contestants/#{@contestant1.id}")
   end
+
+  it "Average Age" do
+    visit "/bachelorettes/#{@bachelorette1.id}"
+
+    expect(page).to have_content("Average Age: #{@bachelorette1.average_age}")
+  end
 end
