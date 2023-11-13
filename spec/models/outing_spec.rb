@@ -34,6 +34,5 @@ RSpec.describe Outing, type: :model do
     @contestant2.outings << @outing1
     @outing1.reload
     expect(@outing1.contestant_names).to eq([@contestant1.name, @contestant2.name])
-
   end
 end
