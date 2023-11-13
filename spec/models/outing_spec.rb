@@ -30,9 +30,11 @@ RSpec.describe Outing, type: :model do
   end
 
   it "contestant_names" do
-    expect(@outing1.contestant_names).to eq([@contestant1])
+    # expect(@outing1.contestant_names).to eq([@contestant1.name])
+    expect(@outing1.contestant_names).to eq([@contestant1.name])
+
     @contestant2.outings << @outing1
     @outing1.reload
-    expect(@outing1.contestant_names).to eq([@contestant1, @contestant2])
+    expect(@outing1.contestant_names).to eq([@contestant1.name, @contestant2.name])
   end
 end

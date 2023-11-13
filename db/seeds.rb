@@ -18,3 +18,7 @@
 
 @outing1 = @contestant1.outings.create(name: "Heli Ride", location: "Maui", date: "7/4/21")
 @outing2 = @contestant1.outings.create(name: "Skiing", location: "Aspen", date: "1/1/22")
+
+@outing1.contestants << @contestant2
+@outing1.contestants << @contestant3
+@outing1.contestants << @contestant4

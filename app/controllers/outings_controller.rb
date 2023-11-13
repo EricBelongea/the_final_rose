@@ -4,9 +4,10 @@ class OutingsController < ApplicationController
   end
 
   def update  
+    # require 'pry'; binding.pry
     @outing = Outing.find(params[:id])
-    if params[:remove_contestant_id]
-      @contestant = Contestant.find(params[:remove_contestant_id])
+    if params[:remove_contestant_name]
+      @contestant = Contestant.find_by(name: params[:remove_contestant_name])
       @outing.contestants.delete(@contestant)
       redirect_to "/outings/#{@outing.id}"
     else
