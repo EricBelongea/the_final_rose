@@ -5,4 +5,10 @@ class Outing < ApplicationRecord
   def count_of_contestants
     contestants.count
   end
+
+  def contestant_names
+    contestants.map do |contestant| 
+      contestant.name
+    end
+  end
 end
