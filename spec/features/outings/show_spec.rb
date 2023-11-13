@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Outing, type: :model do
+RSpec.describe "Contestants Index" do
   before(:each) do
     @bachelorette1 = Bachelorette.create(name: "Kardashians", season_number: 1, description: "Try to keep up")
     @bachelorette2 = Bachelorette.create(name: "Joneses", season_number: 2, description: "Who are they?")
@@ -14,18 +14,15 @@ RSpec.describe Outing, type: :model do
 
     @outing1 = @contestant1.outings.create(name: "Heli Ride", location: "Maui", date: "7/4/21")
     @outing2 = @contestant1.outings.create(name: "Skiing", location: "Aspen", date: "1/1/22")
-    @outing2 = Outing.create(name: "Skiing", location: "Aspen", date: "1/1/22")
   end
 
-  describe "relationships" do
-    it { should have_many :contestant_outings }
-    it { should have_many(:contestants).through(:contestant_outings) }
-  end
+  it "Shows attributes and how many contestants have been on that outing" do
+    visit "/outings/#{@outing1.id}"
 
-  it "count_of_contestants" do
-    expect(@outing1.count_of_contestants).to eq(1)
-    
-    @contestant2.outings << @outing1
-    expect(@outing1.count_of_contestants).to eq(2)
+    expect(page).to have_content(@outing1.name)
+    expect(page).to have_content(@outing1.date)
+    expect(page).to have_content(@outing1.location)
+    expect(page).to have_content(@outing1.count_of_contestants)
+    # require 'pry'; binding.pry
   end
 end
