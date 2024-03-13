@@ -4,7 +4,6 @@ class OutingsController < ApplicationController
   end
 
   def update  
-    # require 'pry'; binding.pry
     @outing = Outing.find(params[:id])
     if params[:remove_contestant_name]
       @contestant = Contestant.find_by(name: params[:remove_contestant_name])
